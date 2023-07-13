@@ -14,6 +14,14 @@ spring:
                   uri: lb://player-service/player
                   predicates:
                     - Path=/player/**
+                  filters:
+                    - name: CircuitBreaker
+                    args:
+                      name: player-service
+                      sliding-window-size: 20
+                      permitted-number-of-calls-in-half-open-state: 5
+                      failure-rate-threshold: 50
+                      wait-duration-in-open-state: 15s
                 - id: game
                   uri: lb://game-service/play
                   predicates:
