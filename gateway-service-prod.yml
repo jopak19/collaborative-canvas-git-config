@@ -3,12 +3,12 @@ eureka:
         register-with-eureka: true
         fetch-register: true
         defaultZone: http://localhost:8761/eureka
-management.endpoints.
+
 management:
     endpoint:
         web:
             exposure: 
-                include: *
+                include: "*"
         health:
             show-details: always
             circuitbreakers:
